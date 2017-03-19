@@ -1,19 +1,17 @@
 package cieloecommerce.sdk.ecommerce.request;
 
-import java.io.IOException;
-
+import cieloecommerce.sdk.Environment;
+import cieloecommerce.sdk.Merchant;
+import cieloecommerce.sdk.ecommerce.CardToken;
+import com.google.gson.GsonBuilder;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 
-import com.google.gson.GsonBuilder;
+import java.io.IOException;
 
-import cieloecommerce.sdk.Environment;
-import cieloecommerce.sdk.Merchant;
-import cieloecommerce.sdk.ecommerce.CardToken;
-
-public class CreateCartTokenRequest extends AbstractSaleRequest<CardToken, CardToken> {
-	public CreateCartTokenRequest(Merchant merchant, Environment environment) {
+public class CreateCardTokenRequest extends AbstractSaleRequest<CardToken, CardToken> {
+	public CreateCardTokenRequest(Merchant merchant, Environment environment) {
 		super(merchant, environment);
 	}
 

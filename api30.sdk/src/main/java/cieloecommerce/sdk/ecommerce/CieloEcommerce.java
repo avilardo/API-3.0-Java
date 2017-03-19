@@ -1,15 +1,10 @@
 package cieloecommerce.sdk.ecommerce;
 
-import java.io.IOException;
-
+import cieloecommerce.sdk.Merchant;
+import cieloecommerce.sdk.ecommerce.request.*;
 import org.apache.http.client.HttpClient;
 
-import cieloecommerce.sdk.Merchant;
-import cieloecommerce.sdk.ecommerce.request.CieloRequestException;
-import cieloecommerce.sdk.ecommerce.request.CreateCartTokenRequest;
-import cieloecommerce.sdk.ecommerce.request.CreateSaleRequest;
-import cieloecommerce.sdk.ecommerce.request.QuerySaleRequest;
-import cieloecommerce.sdk.ecommerce.request.UpdateSaleRequest;
+import java.io.IOException;
 
 /**
  * The Cielo Ecommerce SDK front-end;
@@ -86,13 +81,34 @@ public class CieloEcommerce {
 	 *      Codes</a>
 	 */
 	public CardToken createCardToken(CardToken cardToken) throws IOException, CieloRequestException {
-		CreateCartTokenRequest createCartTokenRequest = new CreateCartTokenRequest(merchant, environment);
+		CreateCardTokenRequest createCardTokenRequest = new CreateCardTokenRequest(merchant, environment);
 
-		createCartTokenRequest.setHttpClient(httpClient);
+		createCardTokenRequest.setHttpClient(httpClient);
 
-		cardToken = createCartTokenRequest.execute(cardToken);
+		cardToken = createCardTokenRequest.execute(cardToken);
 
 		return cardToken;
+	}
+
+	/**
+	 * Query a {@link CardToken} on Cielo by card token
+	 *
+	 * @param cardToken
+	 *            The cardToken to be queried
+	 * @return The {@link CardToken} with tokenized card number, holder name, and expiration date
+	 * @throws IOException
+	 * @throws CieloRequestException
+	 *             if anything gets wrong.
+	 * @see <a href=
+	 *      "https://developercielo.github.io/Webservice-3.0/english.html#error-codes">Error
+	 *      Codes</a>
+	 */
+	public CardToken queryCardToken(String cardToken) throws IOException, CieloRequestException {
+		QueryCardTokenRequest queryCardTokenRequest = new QueryCardTokenRequest(merchant, environment);
+
+		queryCardTokenRequest.setHttpClient(httpClient);
+
+		return queryCardTokenRequest.execute(cardToken);
 	}
 
 	/**

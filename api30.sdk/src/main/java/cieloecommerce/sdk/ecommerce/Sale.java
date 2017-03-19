@@ -12,6 +12,30 @@ public class Sale {
 	@SerializedName("Payment")
 	private Payment payment;
 
+	@SerializedName("Status")
+	private Integer status;
+
+	@SerializedName("ReasonCode")
+	private Integer reasonCode;
+
+	@SerializedName("ReasonMessage")
+	private String reasonMessage;
+
+	@SerializedName("ProviderReturnCode")
+	private Integer providerReturnCode;
+
+	@SerializedName("ProviderReturnMessage")
+	private String providerReturnMessage;
+
+	@SerializedName("ReturnCode")
+	private Integer returnCode;
+
+	@SerializedName("ReturnMessage")
+	private String returnMessage;
+
+	@SerializedName("Links")
+	private Object links[];
+
 	public Sale(String merchantOrderId) {
 		this.merchantOrderId = merchantOrderId;
 	}
@@ -59,4 +83,67 @@ public class Sale {
 		return this;
 	}
 
+	public Integer getStatus() {
+		return status;
+	}
+
+	public void setStatus(Integer status) {
+		this.status = status;
+	}
+
+	public Integer getReasonCode() {
+		return reasonCode;
+	}
+
+	public void setReasonCode(Integer reasonCode) {
+		this.reasonCode = reasonCode;
+	}
+
+	public String getReasonMessage() {
+		return reasonMessage;
+	}
+
+	public void setReasonMessage(String reasonMessage) {
+		this.reasonMessage = reasonMessage;
+	}
+
+	public Integer getProviderReturnCode() {
+		return providerReturnCode;
+	}
+
+	public void setProviderReturnCode(Integer providerReturnCode) {
+		this.providerReturnCode = providerReturnCode;
+	}
+
+	public String getProviderReturnMessage() {
+		return providerReturnMessage;
+	}
+
+	public void setProviderReturnMessage(String providerReturnMessage) {
+		this.providerReturnMessage = providerReturnMessage;
+	}
+
+	public Integer getReturnCode() {
+		return returnCode;
+	}
+
+	public void setReturnCode(Integer returnCode) {
+		this.returnCode = returnCode;
+	}
+
+	public String getReturnMessage() {
+		return returnMessage;
+	}
+
+	public void setReturnMessage(String returnMessage) {
+		this.returnMessage = returnMessage;
+	}
+
+	public Object[] getLinks() {
+		return links;
+	}
+
+	public void setLinks(Object[] links) {
+		this.links = links;
+	}
 }
