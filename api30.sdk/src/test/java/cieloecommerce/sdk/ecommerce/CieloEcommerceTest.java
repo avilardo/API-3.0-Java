@@ -18,6 +18,8 @@ public class CieloEcommerceTest {
 
     private Environment environment;
 
+    private static String paymentToRefund;
+    
     private final Integer amount = 1 * 100; // R$ 1.00
 
     @Before
@@ -62,8 +64,8 @@ public class CieloEcommerceTest {
 
             Assert.assertSame(0, sale.getPayment().getStatus());
 
-            Assert.assertEquals("0", sale.getPayment().getReturnCode());
-
+            Assert.assertEquals("1", sale.getPayment().getReturnCode());
+            
             String paymentId = sale.getPayment().getPaymentId();
 
             Assert.assertNotNull(paymentId);
@@ -107,6 +109,8 @@ public class CieloEcommerceTest {
 
             String paymentId = sale.getPayment().getPaymentId();
 
+            paymentToRefund = paymentId;
+            
             Assert.assertNotNull(paymentId);
 
             sale = new CieloEcommerce(merchant, environment).captureSale(paymentId, amount, 0);
@@ -151,7 +155,7 @@ public class CieloEcommerceTest {
     @Test
     public void testRefund() {
         try {
-            Sale sale = new CieloEcommerce(merchant, environment).cancelSale("ac0caded-e0f0-4ef6-bc4e-cba54136fae8", amount);
+            Sale sale = new CieloEcommerce(merchant, environment).cancelSale(paymentToRefund, amount);
 
             Assert.assertSame(0, sale.getReasonCode());
         } catch (CieloRequestException e) {
