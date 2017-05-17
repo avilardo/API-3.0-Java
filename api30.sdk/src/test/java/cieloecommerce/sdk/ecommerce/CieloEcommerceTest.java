@@ -24,10 +24,6 @@ public class CieloEcommerceTest {
 
     @Before
     public void setUp() throws Exception {
-//        PROD
-//        merchant = new Merchant("9003eadf-5902-402c-91db-a8a1bcb099c7", "pyPI11Oh5HLPmu8nji6Jd4sdhyAvDIZNy7bYzrzZ");
-//        environment = Environment.PRODUCTION;
-
         merchant = new Merchant("4d019d78-aaf2-487c-b6d6-8d24b152ac46", "NSNFSDYCDQCZSORWJUXGUAEYYZTIJYZLQHLHMCTH");
         environment = Environment.SANDBOX;
     }
